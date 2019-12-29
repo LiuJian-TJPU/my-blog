@@ -3,6 +3,8 @@ import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 
+import 'styles/index.less';
+
 import store from './redux/store';
 
 ReactDom.render(

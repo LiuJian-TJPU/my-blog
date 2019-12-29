@@ -1,0 +1,1 @@
+export const ACTION_HOME_TOGGLE_SIDER = 'ACTION_HOME_TOGGLE_SIDER'; //关闭/打开首页侧边栏
