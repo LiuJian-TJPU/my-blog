@@ -6,13 +6,13 @@ import reducer from './reducer';
 // import saga from './sagas';
 
 // import thunk from './thunk'
-// import logger from 'redux-logger'
+import reduxLogger from 'redux-logger'
 
 // const sagaMiddleware = createSagaMiddleware()
-// const enhancers = process.env.NODE_ENV === 'production' ? [] : [logger];
+const enhancers = process.env.NODE_ENV === 'production' ? [] : [reduxLogger];
 const store = createStore(
-  reducer
-  // applyMiddleware(...enhancers)
+  reducer,
+  applyMiddleware(...enhancers)
 );
 // sagaMiddleware.run(saga);
 export default store;

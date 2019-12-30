@@ -1,1 +1,2 @@
-export const ACTION_HOME_TOGGLE_SIDER = 'ACTION_HOME_TOGGLE_SIDER'; //关闭/打开首页侧边栏
+export const ACTION_HOME_TOGGLE_SIDER = 'ACTION_HOME_TOGGLE_SIDER'; //显示/隐藏首页侧边栏
+export const ACTION_HOME_FOLD_SIDER = 'ACTION_HOME_FOLD_SIDER'; //折叠/打开首页侧边栏

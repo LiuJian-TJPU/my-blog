@@ -13,7 +13,8 @@ module.exports = webpackMerge(baseConfig, {
   devServer: {
     contentBase: false,
     open: true,
-    host: 'localhost',
+    // host: 'localhost',
+    host: 'dev.flycua.com',
     disableHostCheck: true,
     port: 3001,
     // port: 443,

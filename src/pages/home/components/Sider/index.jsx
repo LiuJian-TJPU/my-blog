@@ -7,26 +7,31 @@ import './index.less'
 
 class SiderBar extends Component {
 
-  onCollapse = collapsed => {
-    console.log(collapsed);
-    this.props.toggleSider(collapsed)
+  onCollapse = () => {
+    this.props.foldSider(!this.props.collapsed)
   };
 
   render() {
-    const { collapsed } = this.props;
+    const { siderShow, collapsed } = this.props;
     return (
       <Sider
+        className='home-sider'
         style={{
           height: '100vh',
           position: 'fixed',
           left: 0,
+          display: siderShow ? 'block': 'none'
         }}
-        theme="light" collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+        theme="light"
+        trigger={null}
+        collapsible
+        collapsed={collapsed}
+      >
         <div className="logo">
           <div className='logo-img' style={{ display: collapsed ? 'block' : 'none' }} />
           <div className='logo-text' style={{ display: collapsed ? 'none' : 'block' }}>我的博客</div>
         </div>
-        <Menu style={{border: 'none'}} mode="inline" theme="light" defaultSelectedKeys={['1']}>
+        <Menu className='sider-memu' mode="inline" theme="light" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Icon type="user" />
             <span className="nav-text">nav 1</span>
@@ -60,6 +65,13 @@ class SiderBar extends Component {
             <span className="nav-text">nav 8</span>
           </Menu.Item>
         </Menu>
+        <div
+          className='trigger'
+          style={{width: collapsed ? 80 : 200}}
+          onClick={this.onCollapse}
+        >
+          关闭
+        </div>
       </Sider>
     )
   }
