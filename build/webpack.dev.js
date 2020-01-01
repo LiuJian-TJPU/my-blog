@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -26,8 +26,8 @@ module.exports = webpackMerge(baseConfig, {
   // 插件
   plugins: [
     new HtmlWebpackPlugin({
-      template: resolve('../public/index.html')
-    }),
-    new webpack.HotModuleReplacementPlugin()
+      template: resolve('public/index.html')
+    })
+    // ,new webpack.HotModuleReplacementPlugin()
   ]
 });

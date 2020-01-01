@@ -1,6 +1,7 @@
 
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -65,13 +66,14 @@ module.exports = webpackMerge(baseConfig, {
     }
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name][contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolve('../public/index.html'),
-      favicon: resolve('../public/favicon.ico'),
+      template: resolve('public/index.html'),
+      favicon: resolve('public/favicon.ico'),
       minify: {
         collapseWhitespace: true//html压缩
       }
