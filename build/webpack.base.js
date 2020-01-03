@@ -6,6 +6,26 @@ const {
   isDev
 } = require('./utils.js');
 
+const commonProdLoader = ['css-loader', 'postcss-loader']
+const commonLessLoader = {
+  loader: 'less-loader',
+  options: {
+    javascriptEnabled: true
+  }
+}
+const commonSassLoader = [
+  'sass-loader',
+  {
+    loader: 'sass-resources-loader',
+    options: {
+      resources: [
+        // resolve方法第二个参数为scss配置文件地址，如果有多个，就进行依次添加即可
+        resolve('src/styles/mixins.scss'),
+        resolve('src/styles/variables.scss')
+      ]
+    }
+  }
+]
 console.log(process.env.NODE_ENV)
 console.log(isDev)
 
@@ -34,7 +54,8 @@ module.exports = {
 
 
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/
@@ -62,25 +83,15 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: isDev ? ['style-loader', 'css-loader'] : [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'] // 从右向左解析原则
+        use: isDev ? ['style-loader', 'css-loader'] : [MiniCssExtractPlugin.loader, ...commonProdLoader] // 从右向左解析原则
       },
       {
         test: /\.less$/,
-        use: isDev ? ['style-loader', 'css-loader', {
-          loader: 'less-loader',
-          options: {
-            javascriptEnabled: true
-          }
-        }] : [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', {
-          loader: 'less-loader',
-          options: {
-            javascriptEnabled: true
-          }
-        }]
+        use: isDev ? ['style-loader', 'css-loader', commonLessLoader] : [MiniCssExtractPlugin.loader, ...commonProdLoader, commonLessLoader]
       },
       {
         test: /\.(sass|scss)$/,
-        use: isDev ? ['style-loader', 'css-loader', 'sass-loader'] : [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        use: isDev ? ['style-loader', 'css-loader', ...commonSassLoader] : [MiniCssExtractPlugin.loader, ...commonProdLoader, ...commonSassLoader]
       },
 
     ]

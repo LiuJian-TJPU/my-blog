@@ -1,6 +1,7 @@
 import React from 'react';
-// import ContentItem from '../ContentItem';
-import './index.less';
+import ContentItem from '../ContentItem';
+import { Button } from 'antd';
+import './index.scss';
 
 // const HomeContentList = () => (
 //   <div className='content-list'>
@@ -16,11 +17,12 @@ import { Row, Col } from 'antd';
 
 const HomeContentList = () => (
   <div className='content-list'>
+    <Button icon="search">Search</Button>
     <Row gutter={16}>
       {
         [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16].map(item => ((
           <Col className="content-item"  xs={24} sm={12} md={8} lg={8} xl={6}>
-            <div className="card">col-{item}</div>
+            <ContentItem title={item}/>
           </Col>
 
         )))

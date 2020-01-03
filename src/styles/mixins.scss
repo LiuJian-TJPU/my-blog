@@ -1,0 +1,9 @@
+@mixin card {
+  box-shadow: 0px 2px 0px rgba(170, 170, 170, 0.1);
+  background: #fff;
+  border-radius: 3px;
+}
+
+@mixin transition {
+  transition: all 0.2s;
+}

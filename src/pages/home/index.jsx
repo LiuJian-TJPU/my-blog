@@ -5,13 +5,16 @@ import Sider from "./components/Sider";
 import Nav from "./components/Nav";
 import Header from "./components/Header";
 import ContentList from "./components/ContentList";
-import { Layout, Menu, Breadcrumb, Icon } from "antd";
 
 import { actionHomeToggleSider, actionHomeFoldSider } from "actions/home";
 
 import { debounce } from "utils/common";
 
 import "./index.less";
+
+const navStyle = {
+  width: '15vw'
+}
 
 const mapState = state => ({
   collapsed: state.home.collapsed,
@@ -53,17 +56,17 @@ class Home extends Component {
     } = this.props;
 
     return (
-      <Layout className="home-container">
-        <Sider siderShow={siderShow} collapsed={collapsed} foldSider={actionHomeFoldSider} />
-        <section className="home-content-right">
-          <Nav show={siderShow} toggleSider={actionHomeToggleSider} />
-          <Layout style={{ marginLeft: siderShow ? collapsed ? 80 : 200 : 0 }}
-          >
-            <Header />
-            <ContentList />
-          </Layout>
+      <div className="home-container">
+        <nav className='home-nav' style={{display: siderShow ? 'block': 'none', width: collapsed ? '5vw': '10vw'}}>
+          <Sider siderShow={siderShow} collapsed={collapsed} foldSider={actionHomeFoldSider} />
+        </nav>
+        <section className="home-content">
+          <Header />
+          <ContentList />
+          {/* <ContentList />
+          <ContentList /> */}
         </section>
-      </Layout>
+      </div>
     );
   }
 }
