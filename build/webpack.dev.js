@@ -1,10 +1,9 @@
 // const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const baseConfig = require('./webpack.base')
+const baseConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const { resolve } = require('./utils.js');
-
 
 module.exports = webpackMerge(baseConfig, {
   // 指定构建环境
@@ -20,7 +19,7 @@ module.exports = webpackMerge(baseConfig, {
     // port: 443,
     // https: true,
     overlay: true,
-    hot: true
+    hot: false
     // inline: true
   },
   // 插件
