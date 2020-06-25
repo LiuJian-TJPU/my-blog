@@ -1,0 +1,5 @@
+@host=http://59.110.63.82/
+GET {{host}}/v1/file/policy
+
+###
+GET {{host}}//v1/media/check?md5=123

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .c {
+        display: grid;
+        /* grid-template-rows: 300px; */
+        /* grid-template-columns: repeat(3, 33.33%); */
+        /* grid-template-columns: repeat(auto-fill, 100px); */
+        /* grid-template-columns: 1fr 2fr; */
+        /* grid-template-columns: 150px 1fr 2fr; */
+
+        gap: 20px;
+
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px;
+        /* grid-template-areas:
+          "a b c"
+          "d e f"
+          "g h i"; */
+
+        grid-template-areas:
+          "a a a"
+          "b b b"
+          "c c c";
+
+        grid-template-areas:
+          "a . c"
+          "d . f"
+          "g . i";
+
+        justify-items: center;
+        align-items: center;
+
+        justify-content: center;
+      }
+      i {
+        margin: 10px;
+        background: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="c">
+      <div class="i"><p>1</p></div>
+      <div class="i"><p>2</p></div>
+      <div class="i"><p>3</p></div>
+    </div>
+  </body>
+</html>
