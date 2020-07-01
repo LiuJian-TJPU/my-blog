@@ -1,8 +1,9 @@
-export const updateLine = (data) => ({
-  type: 'TEST_LINE',
-  data
-})
-export const updateTotal = (data) => ({
-  type: 'TEST_TOTAL_PRICE',
-  data
-})
+import { test } from "@server/test";
+
+/**
+ *  测试redux
+ */
+export const testAction = () => async (dispatch) => {
+  const res = await test();
+  console.log(res);
+};
