@@ -24,7 +24,11 @@ module.exports = webpackMerge(baseConfig, {
     overlay: true,
     hot: true,
     // inline: true
+    noInfo: true,
     historyApiFallback: true,
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
   },
   stats: "errors-only",
   // 插件

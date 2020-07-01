@@ -4,7 +4,6 @@ const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 const { resolve, isDev } = require("./utils.js");
 
-console.log(process.env.NODE_ENV);
 console.log(isDev);
 
 module.exports = {
@@ -131,6 +130,12 @@ module.exports = {
                 loader: "less-loader",
                 options: { lessOptions: { javascriptEnabled: true } },
               },
+              {
+                loader: "style-resources-loader",
+                options: {
+                  patterns: resolve("src/css/*.less"),
+                },
+              },
             ],
       },
       {
@@ -156,6 +161,12 @@ module.exports = {
               {
                 loader: "less-loader",
                 options: { lessOptions: { javascriptEnabled: true } },
+              },
+              {
+                loader: "style-resources-loader",
+                options: {
+                  patterns: resolve("src/css/*.less"),
+                },
               },
             ],
       },
