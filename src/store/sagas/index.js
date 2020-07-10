@@ -1,17 +1,39 @@
-import { delay, put, takeEvery, all } from "redux-saga/effects";
+import { combineReducers } from "redux";
+import * as sagaEffects from "redux-saga/effects";
 
-function* incrementAsync() {
-  yield delay(1000);
-  yield put({ type: "INCREMENT" });
-}
+import models from "../models";
 
-export function* helloSaga() {
-  console.log("Hello Sagas!");
-}
+let _reducers = {};
+let _sagas = [];
 
-export function* async() {
-  yield takeEvery("INCREMENT_ASYNC", incrementAsync);
-}
-export default function* root() {
-  yield all([helloSaga(), async()]);
-}
+models.forEach((model) => {
+  const { namespace, state: initialState, effects } = model;
+  const reducer = (state = initialState, { type, payload = {} }) => {
+    if (type === `${namespace}/save`) {
+      return { ...state, ...payload };
+    } else {
+      return initialState;
+    }
+  };
+  Object.assign(_reducers, { [namespace]: reducer });
+
+  _sagas.push(effects);
+
+  // Object.keys(effects).forEach((key) => {
+  //   // console.log(effects[key]);
+  //   _sagas.push(function* () {
+  //     const data = yield sagaEffects.takeEvery(
+  //       `${namespace}/${key}`,
+  //       effects[key].bind(null, sagaEffects)
+  //     );
+  //     return data;
+  //   });
+  // });
+});
+
+// console.log(reducers);
+const reducers = combineReducers(_reducers);
+const sagas = function* () {
+  yield sagaEffects.all(_sagas.map((saga) => saga(sagaEffects)));
+};
+export { reducers, sagas };

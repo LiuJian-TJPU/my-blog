@@ -1,5 +1,19 @@
-@host = http://liujiancn.cn:3000
+# @host = http://liujiancn.cn:3000/api
+@host = "http://localhost:3000/api"
 
 ###
 
-GET {{host}}/api/test
+GET {{host}}/test
+
+###
+POST {{host}}/user/loginCheck
+
+### 
+POST {{host}}/user/login
+
+Content-Type: application/json
+
+{
+  "username": "liusi",
+  "passeord": 12345678
+}
