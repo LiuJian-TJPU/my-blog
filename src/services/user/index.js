@@ -1,1 +1,1 @@
-export { getCaptcha } from "./register";
+export { getCaptcha, register } from "./register";

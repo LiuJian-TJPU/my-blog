@@ -20,7 +20,7 @@ const Home = () => {
         />
         {/* </div> */}
         <div className={styles.list}>
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 99, 98, 97, 96, 95].map((item) => (
             <Item key={item} />
           ))}
         </div>

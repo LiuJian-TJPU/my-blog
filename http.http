@@ -1,0 +1,5 @@
+@host = http://liujiancn.cn:3000
+
+###
+
+GET {{host}}/api/test

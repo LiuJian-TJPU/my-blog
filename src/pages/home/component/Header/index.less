@@ -1,51 +1,69 @@
+// .header {
+//   background: #fff;
+//   border-bottom: 1px solid #f0f0f0;
+// }
+// .content {
+//   .content();
+//   height: 64px;
+//   // max-width: 1440px;
+//   display: grid;
+//   grid-template-columns: 2fr 1fr;
+//   align-items: center;
+
+//   .search {
+//     justify-self: flex-end;
+//     padding-left: 50px;
+//     input {
+//       background: @bg-input;
+//     }
+//   }
+
+//   :global {
+//     .ant-input-search {
+//       border-radius: 30px;
+//       transition: all 0.5s;
+//       background: @bg-input;
+//     }
+//   }
+// }
+
+// .left {
+//   display: grid;
+//   grid-template-columns: 100px auto;
+//   align-items: center;
+//   .logo {
+//     font-size: 30px;
+//     // line-height: 100%;
+//     font-weight: bold;
+//   }
+
+//   .nav {
+//     > a {
+//       padding: 0 10px;
+//       font-size: 16px;
+//       color: @font-color;
+
+//       &.selected {
+//         color: @color-main;
+//       }
+//     }
+//   }
+// }
+
 .header {
-  background: #fff;
-  border-bottom: 1px solid #f0f0f0;
-}
-.content {
-  .content();
-  height: 64px;
-  // max-width: 1440px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  align-items: center;
-
-  .search {
-    justify-self: flex-end;
-    padding-left: 50px;
-    input {
-      background: @bg-input;
-    }
-  }
-
-  :global {
-    .ant-input-search {
-      border-radius: 30px;
-      transition: all 0.5s;
-      background: @bg-input;
-    }
-  }
-}
-
-.left {
-  display: grid;
-  grid-template-columns: 100px auto;
-  align-items: center;
-  .logo {
-    font-size: 30px;
-    // line-height: 100%;
-    font-weight: bold;
-  }
-
-  .nav {
-    > a {
-      padding: 0 10px;
-      font-size: 16px;
-      color: @font-color;
-
-      &.selected {
-        color: @color-main;
-      }
+  background-size: cover;
+  background-repeat: no-repeat;
+  .mask {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    .tip {
+      width: 80%;
+      color: #fff;
+      border-top: 1px solid #fff;
+      border-bottom: 1px solid #fff;
     }
   }
 }

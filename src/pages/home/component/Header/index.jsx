@@ -10,8 +10,24 @@ const Home = () => {
   console.log(end, type);
   const [inputWidth, setInputWidth] = useState(150);
   return (
-    <header className={styles.header}>
-      <div className={styles.content}>
+    <header
+      className={styles.header}
+      style={{
+        height: window.innerHeight,
+        backgroundImage:
+          "url(https://api.berryapi.net/?service=App.Bing.Images&day=7)",
+      }}
+    >
+      <div className={styles.mask}>
+        <div className={styles.tip}>
+          <p>
+            错误的人什么都没有留下，只教会了我们惩罚对的人的方法。比如一段突如其来的倔强，比如一场没有终结的冷漠，比如一次轻而易举的离开。
+          </p>
+          <p>-</p>
+          <p>艾默生</p>
+        </div>
+      </div>
+      {/* <div className={styles.content}>
         <div className={styles.left}>
           <div className={styles.logo}>
             <Link to="/">博客</Link>
@@ -42,7 +58,7 @@ const Home = () => {
             }}
           />
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };

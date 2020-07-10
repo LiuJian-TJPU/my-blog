@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { getCaptcha } from "@server/user";
+import { getCaptcha, register } from "@server/user";
 
 import { Tabs, Form, Input, Button, notification } from "antd";
 import styles from "./index.less";
@@ -15,7 +15,9 @@ const Login = (props) => {
   };
 
   const onSignUp = (value) => {
-    console.log(value);
+    // console.log(value);
+    const { username, password } = value;
+    register({ username, password }).then((res) => console.log(res));
   };
 
   const onGetCaptcha = async () => {
@@ -50,7 +52,7 @@ const Login = (props) => {
         </TabPane>
         <TabPane tab="注册" key="signUp">
           <Form form={form} onFinish={onSignUp}>
-            <Item name="name">
+            <Item name="username">
               <Input autoComplete="off" size="large" placeholder="用户名" />
             </Item>
             <Item name="address">
@@ -64,8 +66,11 @@ const Login = (props) => {
                 onSearch={onGetCaptcha}
               />
             </Item>
-            <Item name="passwordAgain">
+            <Item name="password">
               <Input.Password size="large" placeholder="请输入密码" />
+            </Item>
+            <Item name="passwordAgain">
+              <Input.Password size="large" placeholder="请再次输入密码" />
             </Item>
             <Button size="large" htmlType="submit" type="primary" block>
               注册
