@@ -205,7 +205,7 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({
-      "process.env.API": JSON.stringify(process.env.API),
+      // "process.env.API": JSON.stringify(process.env.API),
     }),
   ],
 };

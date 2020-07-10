@@ -5,6 +5,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const { resolve } = require("./utils.js");
 
+const proxy =
+  process.env.API_ENV === "online"
+    ? "http://liujiancn.cn:3000"
+    : "http://localhost:3000";
+console.log(proxy);
+
 module.exports = webpackMerge(baseConfig, {
   // 指定构建环境
   mode: "development",
@@ -27,7 +33,7 @@ module.exports = webpackMerge(baseConfig, {
     noInfo: true,
     historyApiFallback: true,
     proxy: {
-      "/api": "http://localhost:3000",
+      "/api": proxy,
     },
   },
   stats: "errors-only",
