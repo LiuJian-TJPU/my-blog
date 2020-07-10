@@ -12,16 +12,12 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./index.less";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {}, []);
-
   const pa = () => {
     console.log(123);
     dispatch(testAction());
   };
 
-  const state = useSelector((state) => state);
-  console.log(state);
+  const { top, scrollTop } = useSelector(({ common }) => common.position);
 
   const onFileChange = (e) => {
     const files = e.target.files;
@@ -30,13 +26,14 @@ const Home = () => {
     dispatch(fileUpload(files));
   };
   return (
-    <div className={styles.home}>
+    <div
+      className={styles.home}
+      // onClick={() => dispatch({ type: "test/test" })}
+    >
       <Header />
-      <Nav />
+      <Nav top={top} scrollTop={scrollTop} />
       <Content />
       <BackTop>up</BackTop>
-      <button onClick={pa}>click</button>
-      <input type="file" onChange={onFileChange} multiple />
     </div>
   );
 };

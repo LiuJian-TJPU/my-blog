@@ -5,16 +5,12 @@ import { types } from "@constants/nav";
 
 import styles from "./index.less";
 const { TabPane } = Tabs;
-const Home = () => {
+const Home = ({ top, scrollTop }) => {
   const { end = "frontend", type = "all" } = useParams();
   const history = useHistory();
   const onTabChange = (tab) => {
     history.push(`/${end}/${tab}`);
   };
-
-  // if (!types[end]) {
-  //   history.replace("/");
-  // }
 
   const typeList = useMemo(() => {
     const list = types[end];
@@ -25,8 +21,21 @@ const Home = () => {
     }
   }, [end]);
 
+  const style = useMemo(() => {
+    if (scrollTop >= window.innerHeight) {
+      return {
+        zIndex: "9",
+        opacity: 1,
+      };
+    }
+
+    return {
+      zIndex: "-5",
+      opacity: 0,
+    };
+  }, [scrollTop]);
   return (
-    <nav className={styles.nav}>
+    <nav className={styles.nav} style={style}>
       <Tabs activeKey={type} className={styles.tabs} onChange={onTabChange}>
         {typeList.map(({ key, title }) => (
           <TabPane tab={title} key={key} />

@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { Scrollbars } from "react-custom-scrollbars";
 import "./App.less";
@@ -18,16 +19,29 @@ const renderThumb = ({ style, ...props }) => {
 
 const App = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const scrollBarRef = useRef();
   useEffect(() => {
-    const route = routers.find(({ path }) => path === location.pathname);
-    if (route?.title) {
-      document.title = route.title;
-    }
-    console.log(location.pathname);
+    // scrollBarRef.current.scrollTop(window.innerHeight);
   }, [location]);
+
+  const handleScroll = useCallback((position) => {
+    dispatch({
+      type: "common/save",
+      payload: {
+        position,
+      },
+    });
+  });
+
   return (
     // <Container>
-    <Scrollbars autoHide style={{ height: window.innerHeight }}>
+    <Scrollbars
+      autoHide
+      style={{ height: window.innerHeight }}
+      ref={scrollBarRef}
+      onScrollFrame={handleScroll}
+    >
       <Switch>
         <Route exact path="/">
           <Redirect to="/frontend/all" />

@@ -24,7 +24,7 @@ module.exports = webpackMerge(baseConfig, {
     // host: 'localhost',
     host: "localhost",
     disableHostCheck: true,
-    port: 3001,
+    port: 3008,
     // port: 443,
     // https: true,
     overlay: true,

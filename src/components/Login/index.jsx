@@ -5,19 +5,27 @@ import { getCaptcha, register } from "@server/user";
 
 import { Tabs, Form, Input, Button, notification } from "antd";
 import styles from "./index.less";
+import { useDispatch } from "react-redux";
 
 const { Item } = Form;
 const { TabPane } = Tabs;
 const Login = (props) => {
+  const dispatch = useDispatch();
   const [form] = Form.useForm();
-  const onSignIn = (value) => {
-    console.log(value);
+  const onSignIn = ({ username, password }) => {
+    dispatch({
+      type: "user/login",
+      payload: { username, password },
+      callback() {},
+    });
   };
 
-  const onSignUp = (value) => {
-    // console.log(value);
-    const { username, password } = value;
-    register({ username, password }).then((res) => console.log(res));
+  const onSignUp = ({ username, password }) => {
+    dispatch({
+      type: "user/register",
+      payload: { username, password },
+      callback() {},
+    });
   };
 
   const onGetCaptcha = async () => {
@@ -35,7 +43,7 @@ const Login = (props) => {
       <Tabs>
         <TabPane tab="登录" key="signIn">
           <Form onFinish={onSignIn}>
-            <Item name="name">
+            <Item name="username">
               <Input
                 size="large"
                 autoComplete="off"
