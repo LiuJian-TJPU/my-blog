@@ -1,5 +1,19 @@
 const initialState = {
-  b: 123,
+  login: false,
+  userInfo: {},
+};
+
+const type = {};
+
+export const login = () => async (dispatch) => {
+  const res = await test();
+  console.log(res);
+  dispatch({
+    type: "save",
+    payload: {
+      num: res.test,
+    },
+  });
 };
 
 const reducer = (state = initialState, action) => {
