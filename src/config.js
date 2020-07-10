@@ -7,7 +7,7 @@ export const dev = {
 
 // 生产环境配置
 export const prod = {
-  baseURL: "http://localhost:3000",
+  baseURL: "http://liujiancn.cn:3000",
 };
 
 export default isDev ? dev : prod;
