@@ -4,3 +4,22 @@
   border-bottom: 1px solid @border-color;
   border-radius: @border-radius;
 }
+
+.root {
+  display: flex;
+}
+
+.description {
+  .textEllipsisMulti();
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.title {
+  .textEllipsisMulti(1);
+  color: rgba(255, 255, 255, 0.85);
+  margin: 1rem 0;
+}
+
+.top {
+  font-size: 1rem;
+}

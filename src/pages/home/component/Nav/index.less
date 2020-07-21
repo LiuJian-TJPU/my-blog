@@ -1,14 +1,28 @@
 .nav {
-  position: sticky;
-  top: -1px;
-  z-index: 9;
-  background: #fff;
-  transition: all 0.3s ease;
-  .box-shadow-bottom();
-  .tabs {
-    .content();
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 64px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  &.show {
+    background: radial-gradient(
+      circle farthest-corner at center top,
+      #071021,
+      #19324a
+    );
+    box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+      0 7px 10px -5px rgba(0, 0, 0, 0.15);
   }
-
+  > button {
+    color: #fff;
+    margin-right: 30px;
+  }
   :global {
     .ant-tabs-nav {
       margin: 0;
