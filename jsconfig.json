@@ -10,7 +10,8 @@
       "@server/*": ["src/services/*"],
       "@src/*": ["src/*"],
       "@/*": ["src/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@models/*": ["src/store/models/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -53,5 +53,78 @@
       <div class="i"><p>2</p></div>
       <div class="i"><p>3</p></div>
     </div>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>requestAnimationFrame</title>
+    <style>
+      .box {
+        background: hotpink;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        border-radius: 10px;
+        color: #fff;
+        box-shadow: 0 0 10px hotpink;
+        text-align: center;
+      }
+
+      .btn {
+        background: skyblue;
+        padding: 10px;
+        margin-top: 20px;
+        outline: 0;
+        color: #fff;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <button class="btn">运行</button>
+    <script>
+      let timer;
+      window.onload = () => {
+        const btn = document.querySelector(".btn");
+        const box = document.querySelector(".box");
+        const width = 500;
+        let x = 0;
+        function callback(p) {
+          console.log(x, p);
+          if (x < width) {
+            x += width / 5;
+            box.style.transform = `translateX(${x}px)`;
+            // box.innerHTML = parseInt(box.style.width) / (width / 100) + "%";
+            timer = requestAnimationFrame(callback);
+          } else {
+            cancelAnimationFrame(timer);
+          }
+        }
+        btn.onclick = () => {
+          x = 0;
+          cancelAnimationFrame(timer);
+          timer = requestAnimationFrame(callback);
+        };
+        //   function callback() {
+        //     console.log(parseInt(box.style.width));
+        //     if (parseInt(box.style.width) < width) {
+        //       box.style.width = parseInt(box.style.width) + 5 + "px";
+        //       box.innerHTML = parseInt(box.style.width) / (width / 100) + "%";
+        //       timer = requestAnimationFrame(callback);
+        //     } else {
+        //       cancelAnimationFrame(timer);
+        //     }
+        //   }
+        //   btn.onclick = () => {
+        //     box.style.width = "0";
+        //     cancelAnimationFrame(timer);
+        //     timer = requestAnimationFrame(callback);
+        //   };
+      };
+    </script>
   </body>
 </html>

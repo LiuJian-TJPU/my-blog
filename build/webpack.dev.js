@@ -5,11 +5,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const { resolve } = require("./utils.js");
 
-const proxy =
-  process.env.API_ENV === "online"
-    ? "http://liujiancn.cn:3000"
-    : "http://localhost:3000";
-console.log(proxy);
+const { proxy } = require("./utils");
 
 module.exports = webpackMerge(baseConfig, {
   // 指定构建环境
@@ -19,10 +15,10 @@ module.exports = webpackMerge(baseConfig, {
     publicPath: "/",
   },
   devServer: {
-    contentBase: false,
+    contentBase: resolve("public"),
     open: true,
     // host: 'localhost',
-    host: "localhost",
+    host: "0.0.0.0",
     disableHostCheck: true,
     port: 3008,
     // port: 443,
@@ -32,9 +28,7 @@ module.exports = webpackMerge(baseConfig, {
     // inline: true
     noInfo: true,
     historyApiFallback: true,
-    proxy: {
-      "/api": proxy,
-    },
+    proxy,
   },
   stats: "errors-only",
   // 插件
