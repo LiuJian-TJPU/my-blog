@@ -1,0 +1,13 @@
+.fs(@fs){
+  .fs-@{fs}{
+    font-size: @fs / 10 *1rem;
+  }
+}
+
+@fsList:12,14,16,18,20,22;
+
+.loop(@i) when (@i < length(@fsList)+1){
+    .fs(extract(@fsList, @i));
+    .loop(@i+1);
+}
+.loop(1);

@@ -10,3 +10,14 @@
 .box-shadow-bottom () {
   box-shadow: 0 10px 15px -10px rgba(0, 0, 0, 0.09);
 }
+
+.textEllipsisMulti(@line: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  overflow: hidden;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+}
