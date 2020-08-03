@@ -110,11 +110,12 @@ import {
   Typography,
   IconButton,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
-import { userLoginType } from "@models/user";
+// import { "userLoginType" } from "@models/user";
 
 import { Light } from "../../common/theme";
 
@@ -131,21 +132,21 @@ export default function AlertDialogSlide() {
   const { open } = useSelector(({ user }) => user);
   const [type, setType] = useState("password");
   const dispatch = useDispatch();
-
-  const handleClose = () => {
-    // dispatch({
-    //   type: "user/save",
-    //   payload: {
-    //     open: false,
-    //   },
-    // });
-    form.submit();
-  };
+  console.log(open);
+  // const handleClose = () => {
+  //   dispatch({
+  //     type: "user/save",
+  //     payload: {
+  //       open: true,
+  //     },
+  //   });
+  //   // form.submit();
+  // };
   const handleLogin = (value) => {
     console.log(value);
     const { username, password } = value;
     dispatch({
-      type: userLoginType,
+      type: "userLoginType",
       payload: { username, password },
       callback() {},
     });
@@ -156,7 +157,7 @@ export default function AlertDialogSlide() {
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handleClose}
+        // onClose={handleClose}
         className={styles.root}
         disableBackdropClick={true}
         fullWidth
@@ -200,22 +201,20 @@ export default function AlertDialogSlide() {
             </Form.Item>
           </Form>
         </DialogContent>
-        <Typography variant="subtitle2">未注册手机验证后自动登录</Typography>
+        <Typography variant="subtitle2">未注册手机验证后自动登录 </Typography>
         <Divider light={false} />
         <Typography variant="subtitle2">
           社交帐号登录
           <div style={{ flex: 1 }} />
-          <IconButton>
-            <GitHubIcon />
-          </IconButton>
+          <a href="https://github.com/login/oauth/authorize/?client_id=5302e0a84143b8b3de00&redirect_uri=http://localhost:3008/login">
+            <IconButton>
+              <GitHubIcon />
+            </IconButton>
+          </a>
         </Typography>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            取消
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            登录
-          </Button>
+          <Button color="primary">取消</Button>
+          <Button color="primary">登录</Button>
         </DialogActions>
       </Dialog>
     </Light>
