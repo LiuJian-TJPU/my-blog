@@ -1,8 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
-
-import Scrollbars from "@components/Scrollbar";
+import { connect } from "react-redux";
+import { ConfigProvider } from "antd";
+import zh_CN from "antd/es/locale/zh_CN";
+import Layout from "@components/Layout";
 import Login from "@components/Login";
+
+import {
+  actionToggleLogin,
+  actionAsyncLoginCheck,
+  actionAsyncGetUserInfo,
+} from "@models/user";
+
+// import auth from "@utils/authing";
 
 import {
   createMuiTheme,
@@ -10,6 +20,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import "./App.less";
+import "@common/vue.css";
 
 import routers from "./pages";
 
@@ -63,27 +74,35 @@ theme.typography.subtitle1 = {
   "@media (min-width:1280px)": { fontSize: "1.6rem" },
 };
 
-const App = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Scrollbars>
-        <Switch>
-          {routers.map(({ path, component: Com }) => (
-            <Route key={path} exact path={path}>
-              <Com />
-            </Route>
-          ))}
-          <Route exact path="/404">
-            404
-          </Route>
-          <Route>
-            <Redirect to="404" />
-          </Route>
-        </Switch>
-      </Scrollbars>
-      <Login />
-    </ThemeProvider>
-  );
-};
+@connect(
+  ({ user }) => ({
+    user,
+  }),
+  {
+    actionAsyncGetUserInfo,
+  }
+)
+class App extends Component {
+  componentDidMount() {
+    this.props.actionAsyncGetUserInfo();
+  }
+
+  render() {
+    return (
+      <ThemeProvider theme={theme}>
+        <ConfigProvider locale={zh_CN}>
+          <Layout>
+            <Switch>
+              {routers.map(({ path, component }) => (
+                <Route key={path} exact path={path} component={component} />
+              ))}
+            </Switch>
+          </Layout>
+          <Login />
+        </ConfigProvider>
+      </ThemeProvider>
+    );
+  }
+}
 
 export default App;

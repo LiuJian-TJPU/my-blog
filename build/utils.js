@@ -10,7 +10,7 @@ const api_env_list = {
   online: {
     "/api": "http://liujiancn.cn:3000",
   },
-  locale: {
+  local: {
     "/api": "http://localhost:3000",
   },
 };

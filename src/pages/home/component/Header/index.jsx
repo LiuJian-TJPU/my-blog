@@ -33,21 +33,19 @@ const Home = () => {
       className={styles.header}
       style={{
         height,
-        // backgroundImage:
-        //   "url(https://demos.creative-tim.com/material-kit-react/static/media/bg4.199e9ec1.jpg)",
       }}
     >
-      <Typography variant="h1" className={styles.title}>
+      {/* <Typography variant="h1" className={styles.title}>
         The road to the front
       </Typography>
       <Typography variant="h4" className={styles.title}>
         这是一个博客关于
-      </Typography>
-      <div className={styles.toBottom}>
+      </Typography> */}
+      {/* <div className={styles.toBottom}>
         <IconButton onClick={handleToBottom}>
           <KeyboardArrowDownIcon fontSize="large" />
         </IconButton>
-      </div>
+      </div> */}
     </header>
   );
 };

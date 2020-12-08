@@ -1,0 +1,32 @@
+.profile {
+  display: flex;
+  :global {
+    .MuiFormControl-root {
+      margin: 20px;
+      flex: 1;
+    }
+  }
+  .avatar {
+    width: 280px;
+    height: 280px;
+  }
+
+  .info {
+    flex: 1;
+    > button {
+      margin: 30px;
+      display: flex;
+      justify-content: flex-start;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+      :global {
+        .MuiButton-label {
+          margin: 0 30px;
+        }
+      }
+      &:hover {
+        border-color: #fff;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.nav {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  color: #fff;
+  &.show {
+    background: radial-gradient(
+      circle farthest-corner at center top,
+      #071021,
+      #19324a
+    );
+    box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+      0 7px 10px -5px rgba(0, 0, 0, 0.15);
+  }
+  .content {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    > button {
+      color: #fff;
+      margin-left: 30px;
+    }
+  }
+  :global {
+    .ant-tabs-nav {
+      margin: 0;
+      &::before {
+        border: none;
+      }
+    }
+  }
+}

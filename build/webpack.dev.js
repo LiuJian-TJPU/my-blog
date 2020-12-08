@@ -24,7 +24,7 @@ module.exports = webpackMerge(baseConfig, {
     // port: 443,
     // https: true,
     overlay: true,
-    hot: true,
+    // hot: true,
     // inline: true
     noInfo: true,
     historyApiFallback: true,

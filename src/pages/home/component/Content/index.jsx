@@ -12,24 +12,12 @@ const Home = () => {
   return (
     <div className={styles.content}>
       <div className={styles.left}>
-        {/* 123 */}
-        {/* <div > */}
-        {/* <Carousel>
-            <div style={{ width: 300 }}>123</div>
-            <div style={{ width: 300 }}>456</div>
-          </Carousel> */}
-        {/* <img
-          className={styles.carousel}
-          src="https://upload.jianshu.io/admin_banners/web_images/4984/79ff791e7ddb523246801d656818282e66d40d98.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
-        /> */}
-        {/* </div> */}
         <Card>
           <CardActionArea>
             <CardMedia
-              // component="img"
               alt=""
-              height="300"
-              // image="https://upload.jianshu.io/admin_banners/web_images/4984/79ff791e7ddb523246801d656818282e66d40d98.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
+              style={{ height: 300 }}
+              image="https://upload.jianshu.io/admin_banners/web_images/4984/79ff791e7ddb523246801d656818282e66d40d98.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
             >
               如果人生可以出来
             </CardMedia>
@@ -45,8 +33,6 @@ const Home = () => {
         <div className={styles.right}>
           <Action />
           <Recommend />
-          {/* <Login />
-        <User /> */}
         </div>
       </Hidden>
     </div>

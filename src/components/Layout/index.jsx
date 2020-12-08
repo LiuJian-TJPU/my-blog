@@ -1,47 +1,24 @@
-import React, { useState } from "react";
-import Side from "@components/Slider";
-import { Tabs } from "antd";
+import React, { PureComponent } from "react";
+import Nav from "@components/Nav";
+import { BackTop } from "antd";
+import { IconButton } from "@material-ui/core";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 
-const { TabPane } = Tabs;
-const Layout = (props) => {
-  const [key, setKey] = useState(1);
-  return (
-    <div className="container">
-      {/* <Side /> */}
-      <button
-        onClick={() => {
-          setKey(1);
-        }}
-      >
-        1
-      </button>
-      <button
-        onClick={() => {
-          setKey(2);
-        }}
-      >
-        2
-      </button>
-      <button
-        onClick={() => {
-          setKey(3);
-        }}
-      >
-        3
-      </button>
-      <Tabs activeKey={key + ""}>
-        <TabPane tab="123" key="1">
-          1
-        </TabPane>
-        <TabPane tab="123" key="2">
-          2
-        </TabPane>
-        <TabPane tab="123" key="3">
-          3
-        </TabPane>
-      </Tabs>
-      {props.children}
-    </div>
-  );
-};
+import styles from "./index.less";
+
+class Layout extends PureComponent {
+  render() {
+    return (
+      <div className={styles.layout}>
+        <Nav />
+        <div className={styles.content}>{this.props.children}</div>
+        <BackTop>
+          <IconButton>
+            <KeyboardArrowUpIcon fontSize="large" />
+          </IconButton>
+        </BackTop>
+      </div>
+    );
+  }
+}
 export default Layout;
